@@ -3,6 +3,7 @@ import Card from "./card";
 import SCH from "./SCH";
 import Text from "./text"; // still not use
 import Pizza from "./Pizza";
+import Burger from "./Burger";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       </p>
       <SCH />
       <Pizza />
+      <Burger />
     </div>
   );
 }
