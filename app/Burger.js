@@ -19,8 +19,8 @@ export default function Burger() {
       <div className="flex flex-row gap-x-4 pl-20 pt-7">
         <Mcard
           image="/images/burger.png"
-          name="cheese nurger"
-          altName="cheese nurget "
+          name="cheese Burger"
+          altName="cheese Burger "
           price={20}
           onAddToCart={() =>
             handleShowDetails({

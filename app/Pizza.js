@@ -64,9 +64,6 @@ export default function Pizza() {
           price={40}
           onAddToCart={() =>
             handleShowDetails({
-              name: "Margherita Pizza",
-              image: "/images/Margherita.jpeg",
-              price: 30,
               name: "Veggie Pizza",
               image: "/images/Veggie.jpeg",
               price: 40,
