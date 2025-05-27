@@ -8,6 +8,7 @@ export default function SignUp() {
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const [CPassword, setCPassword] = useState("");
   const router = useRouter();
 
   function SignUp() {
@@ -15,6 +16,8 @@ export default function SignUp() {
       alert("Please fill all the fields ");
     } else if (!Email.includes("@")) {
       alert("please enter a valid email address ");
+    } else if (Password !== CPassword) {
+      alert("Password not match ");
     } else router.push("/");
   }
   return (
@@ -72,6 +75,16 @@ export default function SignUp() {
             className="rounded-2xl border-2 pl-2 pr-2 border-gray-400"
             placeholder="........."
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <label className="text-black " htmlFor="Password">
+            Confirm Password
+          </label>
+          <input
+            type="Password"
+            name="Password"
+            className="rounded-2xl border-2 pl-2 pr-2 border-gray-400"
+            placeholder="........."
+            onChange={(e) => setCPassword(e.target.value)}
           />
           <button
             className="bg-blue-600 text-white rounded-2xl pl-3 pr-3 hover:bg-blue-700 "
