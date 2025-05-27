@@ -22,6 +22,7 @@ import Image from "next/image";
 //   );
 // }
 
+// the only modification that chat gpt made is to add argument onAddToCart 
 export default function Mcard({ image, name, altName, price, onAddToCart }) {
   return (
     <div className="flex flex-col items-center justify-center rounded-2xl shadow-2xl p-10 hover:bg-gray-100 transition duration-300">
