@@ -28,7 +28,12 @@ export default function SignIn() {
             <h1 className="text-gray-400 font-light gap-x-10">
               Dont hvae an account ?
             </h1>
-            <button className="font-bold hover:text-blue-600 ">Sign up </button>
+            <button
+              className="font-bold hover:text-blue-600 "
+              onClick={() => router.push("/SignUp")}
+            >
+              Sign up
+            </button>
           </div>
 
           <h1 className="text-4xl font-bold">sign in </h1>
@@ -61,7 +66,6 @@ export default function SignIn() {
           <input
             type="Email"
             name="Email"
-            id="Email"
             className="rounded-2xl border-2 pl-2 pr-2 border-gray-400"
             placeholder="User@example.com"
             value={Email}
@@ -73,7 +77,6 @@ export default function SignIn() {
           <input
             type="Password"
             name="Password"
-            id="Password"
             className="rounded-2xl border-2 pl-2 pr-2 border-gray-400"
             placeholder="........."
             value={Password}
@@ -83,7 +86,7 @@ export default function SignIn() {
             className="bg-blue-600 text-white rounded-2xl pl-3 pr-3 hover:bg-blue-700 "
             onClick={login}
           >
-            Log In
+            Sign Up
           </button>
         </div>
       </div>
