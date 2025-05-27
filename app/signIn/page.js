@@ -1,6 +1,17 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function SignIn() {
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  function login() {
+    if (Email === "" || Password === "") {
+      alert("pleae fill all the fields");
+    } else <Link herf="/"></Link>;
+  }
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className=" flex flex-row bg-white p-10 rounded-2xl shadow-2xl  text-black ">
@@ -38,27 +49,32 @@ export default function SignIn() {
             </button>
           </div>
           <div className="h-0.5 w-60 bg-gray-200 rounded-full mt-2  "></div>
-          <p className="font-bold">Or continue with enail address </p>
+          <p className="font-bold">Or continue with email address </p>
           <label className="text-black " htmlFor="email">
             Email
           </label>
           <input
-            type="email"
-            name="email"
+            type="Email"
+            name="Email"
+            id="Email"
             className="rounded-2xl border-2 pl-2 pr-2 border-gray-400"
             placeholder="User@example.com"
           />
-          <label className="text-black " htmlFor="email">
+          <label className="text-black " htmlFor="Password">
             Password
           </label>
           <input
             type="Password"
             name="Password"
+            id="Password"
             className="rounded-2xl border-2 pl-2 pr-2 border-gray-400"
             placeholder="........."
           />
-          <button className="bg-blue-600 text-white rounded-2xl pl-3 pr-3 hover:bg-blue-700 ">
-            Log In{" "}
+          <button
+            className="bg-blue-600 text-white rounded-2xl pl-3 pr-3 hover:bg-blue-700 "
+            onClick={login}
+          >
+            Log In
           </button>
         </div>
       </div>
