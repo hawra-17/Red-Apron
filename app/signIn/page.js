@@ -2,14 +2,19 @@
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SignIn() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const router = useRouter();
+
   function login() {
     if (Email === "" || Password === "") {
       alert("pleae fill all the fields");
-    } else <Link herf="/"></Link>;
+    } else if (!Email.includes("@")) {
+      alert("Please enter a valid email address");
+    } else router.push("/");
   }
 
   return (
@@ -59,6 +64,8 @@ export default function SignIn() {
             id="Email"
             className="rounded-2xl border-2 pl-2 pr-2 border-gray-400"
             placeholder="User@example.com"
+            value={Email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <label className="text-black " htmlFor="Password">
             Password
@@ -69,6 +76,8 @@ export default function SignIn() {
             id="Password"
             className="rounded-2xl border-2 pl-2 pr-2 border-gray-400"
             placeholder="........."
+            value={Password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button
             className="bg-blue-600 text-white rounded-2xl pl-3 pr-3 hover:bg-blue-700 "
