@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { supabase } from "../Config/supabaseClient";
 
 export default function SignUp() {
   const [Name, setName] = useState("");
@@ -11,15 +12,42 @@ export default function SignUp() {
   const [CPassword, setCPassword] = useState("");
   const router = useRouter();
 
-  function SignUp() {
+  async function SignUp() {
     if (Name === "" || Email === "" || Password === "") {
-      alert("Please fill all the fields ");
-    } else if (!Email.includes("@")) {
-      alert("please enter a valid email address ");
-    } else if (Password !== CPassword) {
-      alert("Password not match ");
-    } else router.push("/");
+      alert("Please fill all the fields");
+      return;
+    }
+
+    if (!Email.includes("@")) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    if (Password !== CPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    const { data, error } = await supabase.auth.signUp({
+      email: Email,
+      password: Password,
+      options: {
+        data: {
+          full_name: Name,
+        },
+      },
+    });
+
+    if (error) {
+      alert("Sign up failed: " + error.message);
+    } else {
+      alert(
+        "Account created! Please check your email to confirm (if required)."
+      );
+      router.push("/signIn");
+    }
   }
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className=" relative flex flex-row bg-white p-10 rounded-2xl shadow-2xl  text-black ">

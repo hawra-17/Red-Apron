@@ -3,18 +3,35 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { supabase } from "../Config/supabaseClient";
 
 export default function SignIn() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const router = useRouter();
 
-  function login() {
+  async function login() {
     if (Email === "" || Password === "") {
-      alert("pleae fill all the fields");
-    } else if (!Email.includes("@")) {
+      alert("Please fill all the fields");
+      return;
+    }
+
+    if (!Email.includes("@")) {
       alert("Please enter a valid email address");
-    } else router.push("/");
+      return;
+    }
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: Email,
+      password: Password,
+    });
+
+    if (error) {
+      alert("Login failed: " + error.message);
+    } else {
+      alert("Login successful!");
+      router.push("/"); // Redirect to home or dashboard
+    }
   }
 
   return (
@@ -86,7 +103,7 @@ export default function SignIn() {
             className="bg-blue-600 text-white rounded-2xl pl-3 pr-3 hover:bg-blue-700 "
             onClick={login}
           >
-            Sign Up
+            Sign In
           </button>
         </div>
       </div>
